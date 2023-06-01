@@ -4,25 +4,25 @@ networks:
     driver: bridge
 services:
   app: 
-    container_name: deploy-guide
+    container_name: deploy-bd9
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "8888:80"
     networks:
       - bd9-dev
     depends_on:
       - postgres_db
   postgres_db:
-    container_name: postgres
+    container_name: postgres-bd9
     image: postgres:latest
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123
       POSTGRES_DB: BD9
     ports:
-      - "5432:5432"
+      - "5434:5432"
     networks:
       - bd9-dev
     volumes:
